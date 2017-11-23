@@ -1,39 +1,258 @@
-Answers for the world queries go here:
 
-For example:
 
-1. What are the names of all the cities in the Netherlands?
 
-SELECT name AS city FROM city WHERE CountryCode = 'NLD';
-+-------------------+
-| city              |
-+-------------------+
-| Amsterdam         |
-| Rotterdam         |
-| Haag              |
-| Utrecht           |
-| Eindhoven         |
-| Tilburg           |
-| Groningen         |
-| Breda             |
-| Apeldoorn         |
-| Nijmegen          |
-| Enschede          |
-| Haarlem           |
-| Almere            |
-| Arnhem            |
-| Zaanstad          |
-| ´s-Hertogenbosch  |
-| Amersfoort        |
-| Maastricht        |
-| Dordrecht         |
-| Leiden            |
-| Haarlemmermeer    |
-| Zoetermeer        |
-| Emmen             |
-| Zwolle            |
-| Ede               |
-| Delft             |
-| Heerlen           |
-| Alkmaar           |
-+-------------------+
+———— question 1 ——
+
+mysql> select * from city where countryCode = 'NLD';
++----+-------------------+-------------+---------------+------------+
+| ID | Name              | CountryCode | District      | Population |
++----+-------------------+-------------+---------------+------------+
+|  5 | Amsterdam         | NLD         | Noord-Holland |     731200 |
+|  6 | Rotterdam         | NLD         | Zuid-Holland  |     593321 |
+|  7 | Haag              | NLD         | Zuid-Holland  |     440900 |
+|  8 | Utrecht           | NLD         | Utrecht       |     234323 |
+|  9 | Eindhoven         | NLD         | Noord-Brabant |     201843 |
+| 10 | Tilburg           | NLD         | Noord-Brabant |     193238 |
+| 11 | Groningen         | NLD         | Groningen     |     172701 |
+| 12 | Breda             | NLD         | Noord-Brabant |     160398 |
+| 13 | Apeldoorn         | NLD         | Gelderland    |     153491 |
+| 14 | Nijmegen          | NLD         | Gelderland    |     152463 |
+| 15 | Enschede          | NLD         | Overijssel    |     149544 |
+| 16 | Haarlem           | NLD         | Noord-Holland |     148772 |
+| 17 | Almere            | NLD         | Flevoland     |     142465 |
+| 18 | Arnhem            | NLD         | Gelderland    |     138020 |
+| 19 | Zaanstad          | NLD         | Noord-Holland |     135621 |
+| 20 | ´s-Hertogenbosch  | NLD         | Noord-Brabant |     129170 |
+| 21 | Amersfoort        | NLD         | Utrecht       |     126270 |
+| 22 | Maastricht        | NLD         | Limburg       |     122087 |
+| 23 | Dordrecht         | NLD         | Zuid-Holland  |     119811 |
+| 24 | Leiden            | NLD         | Zuid-Holland  |     117196 |
+| 25 | Haarlemmermeer    | NLD         | Noord-Holland |     110722 |
+| 26 | Zoetermeer        | NLD         | Zuid-Holland  |     110214 |
+| 27 | Emmen             | NLD         | Drenthe       |     105853 |
+| 28 | Zwolle            | NLD         | Overijssel    |     105819 |
+| 29 | Ede               | NLD         | Gelderland    |     101574 |
+| 30 | Delft             | NLD         | Zuid-Holland  |      95268 |
+| 31 | Heerlen           | NLD         | Limburg       |      95052 |
+| 32 | Alkmaar           | NLD         | Noord-Holland |      92713 |
++----+-------------------+-------------+---------------+------------+
+
+——— question 2 ———
+
+mysql> select Population from city where city.name = 'Rotterdam';
++------------+
+| Population |
++------------+
+|     593321 |
++------------+
+
+——— question 3 ——
+
+mysql> select name, continent from country where continent = 'North America';
++----------------------------------+---------------+
+| name                             | continent     |
++----------------------------------+---------------+
+| Aruba                            | North America |
+| Anguilla                         | North America |
+| Netherlands Antilles             | North America |
+| Antigua and Barbuda              | North America |
+| Bahamas                          | North America |
+| Belize                           | North America |
+| Bermuda                          | North America |
+| Barbados                         | North America |
+| Canada                           | North America |
+| Costa Rica                       | North America |
+| Cuba                             | North America |
+| Cayman Islands                   | North America |
+| Dominica                         | North America |
+| Dominican Republic               | North America |
+| Guadeloupe                       | North America |
+| Grenada                          | North America |
+| Greenland                        | North America |
+| Guatemala                        | North America |
+| Honduras                         | North America |
+| Haiti                            | North America |
+| Jamaica                          | North America |
+| Saint Kitts and Nevis            | North America |
+| Saint Lucia                      | North America |
+| Mexico                           | North America |
+| Montserrat                       | North America |
+| Martinique                       | North America |
+| Nicaragua                        | North America |
+| Panama                           | North America |
+| Puerto Rico                      | North America |
+| El Salvador                      | North America |
+| Saint Pierre and Miquelon        | North America |
+| Turks and Caicos Islands         | North America |
+| Trinidad and Tobago              | North America |
+| United States                    | North America |
+| Saint Vincent and the Grenadines | North America |
+| Virgin Islands, British          | North America |
+| Virgin Islands, U.S.             | North America |
++----------------------------------+---------------+
+
+—— question 4 ———
+
+mysql> select SurfaceArea from country order by SurfaceArea desc limit 10;
++-------------+
+| SurfaceArea |
++-------------+
+| 17075400.00 |
+| 13120000.00 |
+|  9970610.00 |
+|  9572900.00 |
+|  9363520.00 |
+|  8547403.00 |
+|  7741220.00 |
+|  3287263.00 |
+|  2780400.00 |
+|  2724900.00 |
++-------------+
+10 rows in set (0.00 sec)
+
+_________ question 5 ________
+
+mysql> select Population from city order by Population desc limit 10;
++------------+
+| Population |
++------------+
+|   10500000 |
+|    9981619 |
+|    9968485 |
+|    9696300 |
+|    9604900 |
+|    9269265 |
+|    8787958 |
+|    8591309 |
+|    8389200 |
+|    8008278 |
++------------+
+10 rows in set (0.01 sec)
+
+_______ question6 ______
+
+select Name, Population from city order by Population desc limit 10 where name like '%P%';
+
+_____ question7 ____
+
+mysql> select name, Population from country where continent = 'Asia';
++----------------------+------------+
+| name                 | Population |
++----------------------+------------+
+| Afghanistan          |   22720000 |
+| United Arab Emirates |    2441000 |
+| Armenia              |    3520000 |
+| Azerbaijan           |    7734000 |
+| Bangladesh           |  129155000 |
+| Bahrain              |     617000 |
+| Brunei               |     328000 |
+| Bhutan               |    2124000 |
+| China                | 1277558000 |
+| Cyprus               |     754700 |
+| Georgia              |    4968000 |
+| Hong Kong            |    6782000 |
+| Indonesia            |  212107000 |
+| India                | 1013662000 |
+| Iran                 |   67702000 |
+| Iraq                 |   23115000 |
+| Israel               |    6217000 |
+| Jordan               |    5083000 |
+| Japan                |  126714000 |
+| Kazakstan            |   16223000 |
+| Kyrgyzstan           |    4699000 |
+| Cambodia             |   11168000 |
+| South Korea          |   46844000 |
+| Kuwait               |    1972000 |
+| Laos                 |    5433000 |
+| Lebanon              |    3282000 |
+| Sri Lanka            |   18827000 |
+| Macao                |     473000 |
+| Maldives             |     286000 |
+| Myanmar              |   45611000 |
+| Mongolia             |    2662000 |
+| Malaysia             |   22244000 |
+| Nepal                |   23930000 |
+| Oman                 |    2542000 |
+| Pakistan             |  156483000 |
+| Philippines          |   75967000 |
+| North Korea          |   24039000 |
+| Palestine            |    3101000 |
+| Qatar                |     599000 |
+| Saudi Arabia         |   21607000 |
+| Singapore            |    3567000 |
+| Syria                |   16125000 |
+| Thailand             |   61399000 |
+| Tajikistan           |    6188000 |
+| Turkmenistan         |    4459000 |
+| East Timor           |     885000 |
+| Turkey               |   66591000 |
+| Taiwan               |   22256000 |
+| Uzbekistan           |   24318000 |
+| Vietnam              |   79832000 |
+| Yemen                |   18112000 |
++----------------------+------------+
+
+_____ question 8 _____
+
+mysql> SELECT Language FROM country JOIN countrylanguage ON country.Code = countrylanguage.CountryCode WHERE country.Region = "South America";
++------------------+
+| Language         |
++------------------+
+| Indian Languages |
+| Italian          |
+| Spanish          |
+| Aimará           |
+| Guaraní          |
+| Ketšua           |
+| Spanish          |
+| German           |
+| Indian Languages |
+| Italian          |
+| Japanese         |
+| Portuguese       |
+| Aimará           |
+| Araucan          |
+| Rapa nui         |
+| Spanish          |
+| Arawakan         |
+| Caribbean        |
+| Chibcha          |
+| Creole English   |
+| Spanish          |
+| Ketšua           |
+| Spanish          |
+| English          |
+| Creole French    |
+| Indian Languages |
+| Arawakan         |
+| Caribbean        |
+| Creole English   |
+| Aimará           |
+| Ketšua           |
+| Spanish          |
+| German           |
+| Guaraní          |
+| Portuguese       |
+| Spanish          |
+| Hindi            |
+| Sranantonga      |
+| Spanish          |
+| Goajiro          |
+| Spanish          |
+| Warrau           |
++------------------+
+
+_____ question 9 ______
+
+mysql> SELECT Language FROM country JOIN countrylanguage ON country.Code = countrylanguage.CountryCode JOIN city ON city.CountryCode = country.Code WHERE city.Name = "Barcelona"; +----------+
+| Language |
++----------+
+| Basque   |
+| Catalan  |
+| Galecian |
+| Spanish  |
+| Goajiro  |
+| Spanish  |
+| Warrau   |
++----------+
+7 rows in set (0.00 sec)
